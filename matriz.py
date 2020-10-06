@@ -8,7 +8,12 @@ This matriz is the first step to generate algorithms solutions
 import numpy as np
 
 print('Porfavor deefina el tamanio de la matriz a utilizar')
-print('Se recomienda el tamnio de 15X100\n')
+print('Valor por Default: 15X100')
+change = int(input('Quiere cambiar el tamanio\n 1)yes\n 2)No\n  :'))
 
-col = int(input('Ingrese el numero de columnas: ' ))
-row = int(input('Ingrese el numero de filas: '))
+if change == 1:
+    col = int(input('Ingrese el numero de columnas: ' ))
+    row = int(input('Ingrese el numero de filas: '))
+else:
+    col = 15
+    row = 100
