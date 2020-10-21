@@ -8,6 +8,8 @@ import numpy as np
 import random
 import matplotlib
 import matplotlib.pyplot as plt
+import time
+import dist
 
 
 print('Porfavor defina el tamanio de la matriz a utilizar')
@@ -34,10 +36,16 @@ for j in range(1,(col+1)):
 for i in range(row):
     matriz[i] = random.sample(val, col)
     print(matriz[i])
-
-for cit in city: #######################################create a grphic and draw the cities points
-    plt.plot(cit[0],cit[1], 'o')
+    for road in range(len(matriz[0])):  #####################create the road to visit the cities
+        listaX.append(city[int(matriz[i][road]-1)][0])
+        listaY.append(city[int(matriz[i][road]-1)][1])
+        
+        
+    for cit in city: #######################################create a grphic and draw the cities points
+        plt.plot(cit[0],cit[1], 'o')
+        
     plt.plot(listaX, listaY)
-
-plt.grid()
-plt.show()
+    plt.grid()
+    plt.show()
+    listaX = []
+    listaY = []
