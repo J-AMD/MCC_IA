@@ -23,29 +23,51 @@ else:
     row = 100
     col = 14
     
-matriz = np.empty((row,col))
+#matriz = np.empty((row,col))
+matriz = []
 val=[]
 
 city = [[1,1],[1,7],[2,3],[2,5],[3,2],[4,4],[5,1],[6,6],[7,3],[9,8],[10,5],[12,3],[13,1],[13,6]]
 listaX = []
 listaY = []
+distancia = []
+SumaDistancia = 0
+torneo = []
+ganador = []
+indices =[]
 
 for j in range(1,(col+1)):
     val.append(j)
 
 for i in range(row):
-    matriz[i] = random.sample(val, col)
-    print(matriz[i])
+  #  matriz[i] = random.sample(val, col)
+    matriz.append(random.sample(val, col))
+  #  print(matriz[i])
     for road in range(len(matriz[0])):  #####################create the road to visit the cities
         listaX.append(city[int(matriz[i][road]-1)][0])
         listaY.append(city[int(matriz[i][road]-1)][1])
-        
-        
+            
     for cit in city: #######################################create a grphic and draw the cities points
         plt.plot(cit[0],cit[1], 'o')
         
+    ##############################################################Aptitude Function
+    ########################################################Calculate distance and add to list distancia
+    for indice in range(len(listaX)-1):
+        SumaDistancia = SumaDistancia + dist.distance(listaX[indice],listaY[indice],listaX[indice+1],listaY[indice+1])
+        
+    distancia.append(SumaDistancia)
+    
     plt.plot(listaX, listaY)
     plt.grid()
     plt.show()
     listaX = []
     listaY = []
+    SumaDistancia = 0
+################################################################################## TORNEOS
+##################################################################################
+#################################################################################
+for tor in range(5):
+    x = random.randint(0,99)
+    torneo.append([distancia[x],x])
+    
+ganador = [min(torneo)]
